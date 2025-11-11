@@ -1,213 +1,384 @@
-body {
+* {
   margin: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  min-height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.pet-card-container {
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 5%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.brand-name {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #667eea;
+}
+
+.nav-menu li.active a {
+  color: #667eea;
+}
+
+.nav-menu li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 1rem;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 5rem 5%;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  align-items: center;
+  min-height: 70vh;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.hero-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 500px;
 }
 
-.pet-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  width: 100%;
-  max-width: 450px;
-}
-
-.pet-card-header {
+.pet-tag-preview {
+  width: 300px;
+  height: 400px;
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
-  padding: 20px;
-  text-align: center;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  transform: rotate(-5deg);
+  transition: transform 0.3s;
 }
 
-.pet-card-header h1 {
-  margin: 0;
-  font-size: 1.4em;
+.pet-tag-preview:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.tag-icon {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}
+
+.tag-text {
+  color: white;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 1px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.pet-photo-section {
-  display: flex;
-  justify-content: center;
-  padding: 30px 20px 20px;
-  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
-}
-
-.pet-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 6px solid white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.photo-placeholder {
-  font-size: 80px;
-}
-
-.pet-info {
-  padding: 20px 30px;
+/* Features Section */
+.features-section {
+  padding: 5rem 5%;
   background: white;
 }
 
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 2px solid #f0f0f0;
-}
-
-.info-row:last-child {
-  border-bottom: none;
-}
-
-.label {
-  font-weight: 700;
-  color: #555;
-  font-size: 1em;
-}
-
-.value {
-  font-weight: 600;
-  color: #2c3e50;
-  font-size: 1em;
-}
-
-.emergency-section {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  padding: 20px 30px;
-  color: white;
-}
-
-.emergency-section h2 {
-  margin: 0 0 15px 0;
-  font-size: 1.3em;
-  font-weight: 800;
+.section-title {
   text-align: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 3rem;
 }
 
-.contact-info {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 15px;
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.contact-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  color: #333;
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.contact-label {
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
   font-weight: 700;
+}
+
+.feature-card p {
   color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
-.contact-value {
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.medical-section {
-  padding: 20px 30px;
-  background: #f8f9fa;
-}
-
-.medical-section h3 {
-  margin: 0 0 15px 0;
-  font-size: 1.2em;
-  color: #2c3e50;
-  font-weight: 700;
-  text-align: center;
-}
-
-.medical-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.medical-item {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  border-left: 4px solid #4caf50;
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.medical-item .alert {
-  color: #ff9800;
-}
-
-.pet-card-footer {
+/* CTA Section */
+.cta-section {
+  padding: 5rem 5%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px 30px;
   text-align: center;
   color: white;
 }
 
-.reward-message {
-  margin: 0 0 10px 0;
-  font-size: 1em;
-  font-weight: 600;
-  line-height: 1.5;
+.cta-section h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
-.thank-you {
-  margin: 0;
-  font-size: 1.2em;
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 30px;
   font-weight: 800;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+  color: white;
+  padding: 3rem 5%;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.footer-section p {
+  color: #bbb;
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+  color: #bbb;
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
   }
 
-  .pet-card-header h1 {
-    font-size: 1.2em;
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 3rem 5%;
+    text-align: center;
   }
 
-  .pet-photo {
-    width: 150px;
-    height: 150px;
+  .hero-title {
+    font-size: 2.5rem;
   }
 
-  .photo-placeholder {
-    font-size: 60px;
+  .hero-subtitle {
+    font-size: 1.2rem;
   }
 
-  .pet-info,
-  .emergency-section,
-  .medical-section,
-  .pet-card-footer {
-    padding: 15px 20px;
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
   }
 }

@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
+import { useState } from "react";
 import "./../app/app.css";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
@@ -10,105 +8,126 @@ import "@aws-amplify/ui-react/styles.css";
 
 Amplify.configure(outputs);
 
-const client = generateClient<Schema>();
-
 export default function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  function listTodos() {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }
-
-  useEffect(() => {
-    listTodos();
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
-    });
-  }
+  const [activeSection, setActiveSection] = useState("inicio");
 
   return (
-    <main className="pet-card-container">
-      <div className="pet-card">
-        {/* Header */}
-        <div className="pet-card-header">
-          <h1>🐾 IDENTIFICACIÓN DE MASCOTA 🐾</h1>
+    <div className="app-container">
+      {/* Navigation Bar */}
+      <nav className="navbar">
+        <div className="nav-brand">
+          <span className="logo">🐾</span>
+          <span className="brand-name">Maskota</span>
         </div>
+        <ul className="nav-menu">
+          <li className={activeSection === "inicio" ? "active" : ""}>
+            <a href="#inicio" onClick={() => setActiveSection("inicio")}>Inicio</a>
+          </li>
+          <li className={activeSection === "plaquita" ? "active" : ""}>
+            <a href="#plaquita" onClick={() => setActiveSection("plaquita")}>Plaquita</a>
+          </li>
+          <li className={activeSection === "buscar" ? "active" : ""}>
+            <a href="#buscar" onClick={() => setActiveSection("buscar")}>Buscar Mascota</a>
+          </li>
+          <li className={activeSection === "nosotros" ? "active" : ""}>
+            <a href="#nosotros" onClick={() => setActiveSection("nosotros")}>Nosotros</a>
+          </li>
+          <li className={activeSection === "tienda" ? "active" : ""}>
+            <a href="#tienda" onClick={() => setActiveSection("tienda")}>Tienda</a>
+          </li>
+        </ul>
+        <button className="login-btn">Iniciar Sesión</button>
+      </nav>
 
-        {/* Photo Section */}
-        <div className="pet-photo-section">
-          <div className="pet-photo">
-            <span className="photo-placeholder">📷</span>
-          </div>
-        </div>
-
-        {/* Pet Info */}
-        <div className="pet-info">
-          <div className="info-row">
-            <span className="label">Nombre:</span>
-            <span className="value">Max</span>
-          </div>
-          <div className="info-row">
-            <span className="label">Raza:</span>
-            <span className="value">Labrador</span>
-          </div>
-          <div className="info-row">
-            <span className="label">Color:</span>
-            <span className="value">Dorado</span>
-          </div>
-          <div className="info-row">
-            <span className="label">Edad:</span>
-            <span className="value">3 años</span>
-          </div>
-        </div>
-
-        {/* Emergency Contact */}
-        <div className="emergency-section">
-          <h2>📞 CONTACTO DE EMERGENCIA</h2>
-          <div className="contact-info">
-            <div className="contact-item">
-              <span className="contact-label">Dueño:</span>
-              <span className="contact-value">Juan Pérez</span>
-            </div>
-            <div className="contact-item">
-              <span className="contact-label">Teléfono:</span>
-              <span className="contact-value">+1 234-567-8900</span>
-            </div>
-            <div className="contact-item">
-              <span className="contact-label">Dirección:</span>
-              <span className="contact-value">Calle Principal 123</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Medical Info */}
-        <div className="medical-section">
-          <h3>⚕️ Información Médica</h3>
-          <div className="medical-info">
-            <div className="medical-item">
-              <span>✓ Vacunado</span>
-            </div>
-            <div className="medical-item">
-              <span>✓ Esterilizado</span>
-            </div>
-            <div className="medical-item">
-              <span className="alert">⚠️ Alérgico a: Ninguno</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="pet-card-footer">
-          <p className="reward-message">
-            🏆 Si encuentras a esta mascota, por favor contacta inmediatamente
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">Protege a tu Mejor Amigo</h1>
+          <p className="hero-subtitle">
+            Plaquitas identificadoras inteligentes con tecnología QR
           </p>
-          <p className="thank-you">¡GRACIAS POR TU AYUDA!</p>
+          <p className="hero-description">
+            Si tu mascota se pierde, quien la encuentre puede escanear la plaquita 
+            y contactarte de inmediato. ¡Seguridad y tranquilidad en un solo click!
+          </p>
+          <div className="hero-buttons">
+            <button className="btn-primary">Comprar Ahora</button>
+            <button className="btn-secondary">Ver Catálogo</button>
+          </div>
         </div>
-      </div>
-    </main>
+        <div className="hero-image">
+          <div className="pet-tag-preview">
+            <div className="tag-icon">🏷️</div>
+            <p className="tag-text">Plaquita QR</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section">
+        <h2 className="section-title">¿Por qué elegir Maskota?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">📱</div>
+            <h3>Código QR</h3>
+            <p>Escanea y accede a toda la información de tu mascota al instante</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>Datos Seguros</h3>
+            <p>Tu información y la de tu mascota siempre protegida</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚡</div>
+            <h3>Contacto Rápido</h3>
+            <p>Notificación inmediata si alguien encuentra a tu mascota</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🎨</div>
+            <h3>Personalizable</h3>
+            <p>Diseña tu plaquita con colores y estilos únicos</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">💪</div>
+            <h3>Resistente</h3>
+            <p>Material duradero para uso diario de tu mascota</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🌍</div>
+            <h3>Actualizable</h3>
+            <p>Modifica los datos sin necesidad de cambiar la plaquita</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section">
+        <h2>¿Listo para proteger a tu mascota?</h2>
+        <p>Únete a miles de dueños que ya protegen a sus mascotas con Maskota</p>
+        <button className="cta-button">Crear Mi Plaquita</button>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h4>🐾 Maskota</h4>
+            <p>Protegiendo a tus mascotas desde 2025</p>
+          </div>
+          <div className="footer-section">
+            <h4>Contacto</h4>
+            <p>info@maskota.com</p>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div className="footer-section">
+            <h4>Síguenos</h4>
+            <p>Facebook | Instagram | Twitter</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 Maskota. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+    </div>
   );
 }
