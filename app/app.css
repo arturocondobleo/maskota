@@ -1,65 +1,213 @@
 body {
-    margin: 0;
-    background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
-    display: flex;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.pet-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.pet-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+}
+
+.pet-card-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.pet-card-header h1 {
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pet-photo-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px 20px;
+  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+}
+
+.pet-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.photo-placeholder {
+  font-size: 80px;
+}
+
+.pet-info {
+  padding: 20px 30px;
+  background: white;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 700;
+  color: #555;
+  font-size: 1em;
+}
+
+.value {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1em;
+}
+
+.emergency-section {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  padding: 20px 30px;
+  color: white;
+}
+
+.emergency-section h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.3em;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #333;
+}
+
+.contact-label {
+  font-weight: 700;
+  color: #666;
+}
+
+.contact-value {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.medical-section {
+  padding: 20px 30px;
+  background: #f8f9fa;
+}
+
+.medical-section h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2em;
+  color: #2c3e50;
+  font-weight: 700;
+  text-align: center;
+}
+
+.medical-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medical-item {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.medical-item .alert {
+  color: #ff9800;
+}
+
+.pet-card-footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 30px;
+  text-align: center;
+  color: white;
+}
+
+.reward-message {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.thank-you {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
   }
-  
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+
+  .pet-card-header h1 {
+    font-size: 1.2em;
   }
-  
-  button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    color: white;
+
+  .pet-photo {
+    width: 150px;
+    height: 150px;
   }
-  button:hover {
-    border-color: #646cff;
+
+  .photo-placeholder {
+    font-size: 60px;
   }
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+
+  .pet-info,
+  .emergency-section,
+  .medical-section,
+  .pet-card-footer {
+    padding: 15px 20px;
   }
-  
-  ul {
-    padding-inline-start: 0;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    margin: 8px 0;
-    border: 1px solid black;
-    gap: 1px;
-    background-color: black;
-    border-radius: 8px;
-    overflow: auto;
-  }
-  
-  li {
-    background-color: white;
-    padding: 8px;
-  }
-  
-  li:hover {
-    background: #dadbf9;
-  }
-  
-  a {
-    font-weight: 800;
-    text-decoration: none;
-  }
+}
