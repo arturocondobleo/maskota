@@ -47,18 +47,57 @@ export default function App() {
             Plaquitas identificadoras inteligentes con tecnología QR
           </p>
           <p className="hero-description">
-            Si tu mascota se pierde, quien la encuentre puede escanear la plaquita 
-            y contactarte de inmediato. ¡Seguridad y tranquilidad en un solo click!
+            Cada plaquita tiene un código QR único. Si tu mascota se pierde, quien la encuentre 
+            puede escanear la plaquita y ver inmediatamente tu información de contacto. 
+            ¡Seguridad y tranquilidad en un solo click!
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">Comprar Ahora</button>
-            <button className="btn-secondary">Ver Catálogo</button>
+            <button className="btn-primary" onClick={() => window.location.href = '#como-funciona'}>
+              Cómo Funciona
+            </button>
+            <button className="btn-secondary" onClick={() => window.location.href = '#tienda'}>
+              Comprar Plaquita
+            </button>
           </div>
         </div>
         <div className="hero-image">
           <div className="pet-tag-preview">
             <div className="tag-icon">🏷️</div>
             <p className="tag-text">Plaquita QR</p>
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works Section */}
+      <section className="how-it-works-section" id="como-funciona">
+        <h2 className="section-title">¿Cómo Funciona?</h2>
+        <div className="steps-container">
+          <div className="step-card">
+            <div className="step-number">1</div>
+            <div className="step-icon">🛒</div>
+            <h3>Compra tu Plaquita</h3>
+            <p>Cada plaquita viene con un código QR único (ej: 1eR38G) grabado</p>
+          </div>
+          <div className="step-arrow">→</div>
+          <div className="step-card">
+            <div className="step-number">2</div>
+            <div className="step-icon">📱</div>
+            <h3>Escanea y Activa</h3>
+            <p>Escanea el QR por primera vez e ingresa los datos de tu mascota y tus contactos</p>
+          </div>
+          <div className="step-arrow">→</div>
+          <div className="step-card">
+            <div className="step-number">3</div>
+            <div className="step-icon">🐕</div>
+            <h3>Colócala en el Collar</h3>
+            <p>Pon la plaquita en el collar de tu mascota. Ya está protegida!</p>
+          </div>
+          <div className="step-arrow">→</div>
+          <div className="step-card">
+            <div className="step-number">4</div>
+            <div className="step-icon">✅</div>
+            <h3>Si la Encuentran</h3>
+            <p>Quien escanee el QR verá tus datos de contacto y podrá comunicarse contigo</p>
           </div>
         </div>
       </section>
@@ -104,7 +143,31 @@ export default function App() {
       <section className="cta-section">
         <h2>¿Listo para proteger a tu mascota?</h2>
         <p>Únete a miles de dueños que ya protegen a sus mascotas con Maskota</p>
-        <button className="cta-button">Crear Mi Plaquita</button>
+        <button className="cta-button" onClick={() => window.location.href = '#tienda'}>
+          Obtener Mi Plaquita
+        </button>
+      </section>
+
+      {/* Demo Section */}
+      <section className="demo-section">
+        <h2 className="section-title">Prueba el Sistema</h2>
+        <p className="demo-description">
+          ¿Quieres ver cómo funciona? Ingresa un código de ejemplo para probar el sistema:
+        </p>
+        <div className="demo-examples">
+          <button 
+            className="demo-btn"
+            onClick={() => window.location.href = '/tag/1eR38G'}
+          >
+            Probar con código: 1eR38G
+          </button>
+          <button 
+            className="demo-btn"
+            onClick={() => window.location.href = '/activate/DEMO123'}
+          >
+            Ver proceso de activación
+          </button>
+        </div>
       </section>
 
       {/* Footer */}

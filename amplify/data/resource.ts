@@ -1,15 +1,34 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
-/*== STEP 1 ===============================================================
-The section below creates a Todo database table with a "content" field. Try
-adding a new "isDone" field as a boolean. The authorization rule below
-specifies that any user authenticated via an API key can "create", "read",
-"update", and "delete" any "Todo" records.
+/*== SCHEMA DE DATOS PARA PLAQUITAS DE IDENTIFICACIÓN DE MASCOTAS ========
+Este esquema define:
+- Tag: Plaquitas con código QR único
+- Pet: Datos de la mascota asociada a una plaquita activada
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
+  Tag: a
     .model({
-      content: a.string(),
+      code: a.string().required(), // Código único tipo "1eR38G"
+      isActive: a.boolean().default(false), // Si la plaquita está activada
+      activatedAt: a.datetime(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  
+  Pet: a
+    .model({
+      tagCode: a.string().required(), // Código de la plaquita asociada
+      name: a.string().required(), // Nombre de la mascota
+      species: a.string(), // Especie (perro, gato, etc)
+      breed: a.string(), // Raza
+      color: a.string(), // Color
+      age: a.string(), // Edad
+      photo: a.url(), // Foto de la mascota
+      ownerName: a.string().required(), // Nombre del dueño
+      ownerPhone: a.string().required(), // Teléfono del dueño
+      ownerEmail: a.string(), // Email del dueño
+      ownerAddress: a.string(), // Dirección
+      notes: a.string(), // Notas adicionales
+      createdAt: a.datetime(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });

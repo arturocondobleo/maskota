@@ -310,6 +310,124 @@ body {
   box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
+/* How it Works Section */
+.how-it-works-section {
+  padding: 5rem 5%;
+  background: #f8f9fa;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+  position: relative;
+}
+
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.step-icon {
+  font-size: 4rem;
+  margin: 1rem 0;
+}
+
+.step-card h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.step-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.step-arrow {
+  font-size: 2.5rem;
+  color: #667eea;
+  font-weight: 800;
+}
+
+/* Demo Section */
+.demo-section {
+  padding: 4rem 5%;
+  background: white;
+  text-align: center;
+}
+
+.demo-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-examples {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.demo-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.demo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+}
+
+
 /* Footer */
 .footer {
   background: #2c3e50;
@@ -380,5 +498,17 @@ body {
 
   .cta-section h2 {
     font-size: 2rem;
+  }
+
+  .step-arrow {
+    display: none;
+  }
+
+  .steps-container {
+    flex-direction: column;
+  }
+
+  .step-card {
+    max-width: 100%;
   }
 }
