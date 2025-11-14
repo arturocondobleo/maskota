@@ -4,13 +4,13 @@
  */
 
 import { generateClient } from "aws-amplify/data";
-import type { Schema } from "./amplify/data/resource";
+import type { Schema } from "../amplify/data/resource";
 import { Amplify } from "aws-amplify";
 
 // Importar configuración
 let outputs;
 try {
-  outputs = require("./amplify_outputs.json");
+  outputs = require("../amplify_outputs.json");
   console.log("✅ amplify_outputs.json encontrado\n");
 } catch (error) {
   console.error("❌ Error: No se encontró amplify_outputs.json\n");
